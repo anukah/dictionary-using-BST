@@ -25,15 +25,20 @@ public class Dictionary {
         return root;
     }
 
-    public Node searchNode(Word word){
-        if (searchRec(root, word) == null){ return null;}
-            return searchRec(root, word);
+    public Node searchNode(Word word) {
+        return searchRec(root, word);
     }
 
-    private Node searchRec(Node root, Word word){
-        if (root == null || root.getLetter() == word.getWord().charAt(0)){return root;}
-        if (word.getWord().charAt(0)<root.getLetter()){return searchRec(root.getLeft(), word);}
-        else return searchRec(root.getRight(), word);
+    private Node searchRec(Node root, Word word) {
+        if (root == null || root.getLetter() == word.getWord().charAt(0)) {
+            return root;
+        }
+
+        if (word.getWord().charAt(0) < root.getLetter()) {
+            return searchRec(root.left, word);
+        } else {
+            return searchRec(root.right, word);
+        }
     }
 
     public void inOrder(){
